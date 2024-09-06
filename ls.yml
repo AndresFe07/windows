@@ -1,6 +1,6 @@
 ---
 - name: Listar contenido de la carpeta actual en Windows
-  hosts: windows
+  hosts: all
   gather_facts: no
   tasks:
     - name: Obtener la lista de archivos y carpetas
