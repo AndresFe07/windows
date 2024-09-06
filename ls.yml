@@ -1,0 +1,15 @@
+---
+- name: Listar contenido de la carpeta actual en Windows
+  hosts: windows
+  gather_facts: no
+  tasks:
+    - name: Obtener la lista de archivos y carpetas
+      win_shell: |
+        # Listar el contenido de la carpeta actual
+        $carpetaActual = Get-Location
+        Get-ChildItem -Path $carpetaActual | Select-Object Name
+      register: resultado
+
+    - name: Mostrar resultados
+      debug:
+        msg: "{{ resultado.stdout_lines }}"
